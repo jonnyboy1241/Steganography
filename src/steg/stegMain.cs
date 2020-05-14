@@ -18,9 +18,12 @@ namespace Steganography
 {
     class StegMain
     {
-        public static BitmapImage EmbedImage()
+        // This is the main function where the file embedding occurs. This function is called from the front end
+        public static Image EmbedImage(Image preStegImage)
         {
+            Image postStegImage = preStegImage;
 
+            return postStegImage;
         }
     }
 }
