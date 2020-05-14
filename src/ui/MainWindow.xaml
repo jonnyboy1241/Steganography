@@ -20,8 +20,13 @@
         </Grid.RowDefinitions>
 
         <!-- stegImage will be loaded dynamically -->
-        <Image Name="stegImage" Height="400" Width="400" Grid.Column="0" Grid.Row="0"/>
-        <Button Grid.Column="0" Grid.Row="1" Click="SelectPicture" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">Test Button</Button>
+        <Image Name="stegImage" Height="550" Width="850" Grid.Column="0" Grid.Row="0"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Click="SelectPicture">Select Photo</Button>
+            <Button Click="EmbedFile" Margin="30 0 0 0">Embed File</Button>
+        </StackPanel>
+        
 
     </Grid>
 </Window>

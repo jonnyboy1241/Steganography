@@ -31,7 +31,6 @@ namespace Steganography
         {
             OpenFileDialog dlg = new OpenFileDialog
             {
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
                 Filter = "Image files (*.png) |*.png",
                 RestoreDirectory = true
             };
@@ -46,6 +45,17 @@ namespace Steganography
                 bitmap.EndInit();
                 stegImage.Source = bitmap;
             }
+        }
+
+        private void EmbedFile(object sender, RoutedEventArgs e)
+        {
+            if(stegImage.Source == null)
+            {
+                System.Windows.MessageBox.Show("Select an image first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }
     }
 }
