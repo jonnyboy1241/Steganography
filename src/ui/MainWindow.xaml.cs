@@ -61,6 +61,10 @@ namespace Steganography
             };
 
             System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+            postStegImage.Source = StegMain.EmbedImage((BitmapImage)preStegImage.Source);
+
+
         }
     }
 }

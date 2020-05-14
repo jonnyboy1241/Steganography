@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Steganography"
         mc:Ignorable="d"
-        Title="Jon's Steganography Project" Height="900" Width="1600">
+        Title="Jon's Steganography Project" Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -27,6 +29,7 @@
             <Button Click="EmbedFile" Margin="30 0 0 0">Embed File</Button>
         </StackPanel>
 
+        <Image Name="postStegImage" Height="550" Width="550" Grid.Column="1" Grid.Row="0"/>
 
     </Grid>
 </Window>
