@@ -43,17 +43,22 @@ namespace Steganography
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(selectedFileName);
                 bitmap.EndInit();
-                stegImage.Source = bitmap;
+                preStegImage.Source = bitmap;
             }
         }
 
         private void EmbedFile(object sender, RoutedEventArgs e)
         {
-            if(stegImage.Source == null)
+            if (preStegImage.Source == null)
             {
                 System.Windows.MessageBox.Show("Select an image first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                RestoreDirectory = true
+            };
 
             System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }

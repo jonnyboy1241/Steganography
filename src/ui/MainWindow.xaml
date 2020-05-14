@@ -7,26 +7,26 @@
         mc:Ignorable="d"
         Title="Jon's Steganography Project" Height="900" Width="1600">
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <!-- Define the columns in a ratio of 2:1 -->
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- stegImage will be loaded dynamically -->
-        <Image Name="stegImage" Height="550" Width="850" Grid.Column="0" Grid.Row="0"/>
+        <Image Name="preStegImage" Height="550" Width="550" Grid.Column="0" Grid.Row="0"/>
 
         <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Click="SelectPicture">Select Photo</Button>
             <Button Click="EmbedFile" Margin="30 0 0 0">Embed File</Button>
         </StackPanel>
-        
+
 
     </Grid>
 </Window>
