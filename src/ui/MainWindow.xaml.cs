@@ -60,7 +60,8 @@ namespace Steganography
                 RestoreDirectory = true
             };
 
-            System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            // You need to select a file right here to embed in the file
+            // System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
             postStegImage.Source = StegMain.EmbedImage((BitmapImage)preStegImage.Source);
 
