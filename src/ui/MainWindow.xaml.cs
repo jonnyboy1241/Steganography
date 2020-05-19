@@ -21,6 +21,7 @@ namespace Steganography
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,10 +39,9 @@ namespace Steganography
             // Initialize the OpenFileDialog
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string selectedFileName = dlg.FileName;
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.UriSource = new Uri(dlg.FileName);
                 bitmap.EndInit();
                 preStegImage.Source = bitmap;
             }
@@ -61,11 +61,9 @@ namespace Steganography
             };
 
             // You need to select a file right here to embed in the file
-            // System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            System.Windows.MessageBox.Show("Good job, you have an image!", "Yay", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
-            postStegImage.Source = StegMain.EmbedImage((BitmapImage)preStegImage.Source);
-
-
+            postStegImage.Source = StegMain.EmbedImage((BitmapSource)preStegImage.Source);
         }
     }
 }
