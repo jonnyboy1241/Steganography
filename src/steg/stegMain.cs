@@ -23,17 +23,41 @@ namespace Steganography
         // This is the main function where the file embedding occurs. This function is called from the front end
         public static WriteableBitmap EmbedImage(BitmapSource preStegsrc)
         {
+            int width = preStegsrc.PixelWidth;
+            int height = preStegsrc.PixelHeight;
 
             byte[] preStegPixelBytes = GetPixels(preStegsrc);
 
-            WriteableBitmap stegWBMP = new WriteableBitmap(preStegsrc.PixelWidth,
-                                                           preStegsrc.PixelHeight,
+            WriteableBitmap stegWBMP = new WriteableBitmap(width,
+                                                           height,
                                                            preStegsrc.DpiX,
                                                            preStegsrc.DpiY,
                                                            PixelFormats.Bgra32,     // Let's try this pixel format for now...
                                                            preStegsrc.Palette);
 
-            stegWBMP.WritePixels(new Int32Rect(0, 0, preStegsrc.PixelWidth, preStegsrc.PixelHeight), preStegPixelBytes, preStegsrc.PixelWidth*4, 0);
+            int offset = 2;
+
+            // Steganography goes here
+            for (int pixelNum = 0; pixelNum < width * height * 4; pixelNum += 4)
+            {
+                // offset of:
+                // 0 - Blue,
+                // 1 - Green,
+                // 2 - Red,
+                // 3 - Alpha
+                preStegPixelBytes[pixelNum + 0] >>= offset;
+                preStegPixelBytes[pixelNum + 1] >>= offset;
+                preStegPixelBytes[pixelNum + 2] >>= offset;
+                preStegPixelBytes[pixelNum + 3] >>= offset;
+
+                preStegPixelBytes[pixelNum + 0] <<= offset;
+                preStegPixelBytes[pixelNum + 1] <<= offset;
+                preStegPixelBytes[pixelNum + 2] <<= offset;
+                preStegPixelBytes[pixelNum + 3] <<= offset;
+
+            }
+
+            stegWBMP.WritePixels(new Int32Rect(0, 0, width, height), preStegPixelBytes, preStegsrc.PixelWidth*4, 0);
 
             return stegWBMP;
         }
